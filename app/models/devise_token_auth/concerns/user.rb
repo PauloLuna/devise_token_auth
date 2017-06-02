@@ -23,9 +23,9 @@ module DeviseTokenAuth::Concerns::User
       self.devise_modules.delete(:omniauthable)
     end
 
-    unless tokens_has_json_column_type?
-      serialize :tokens, JSON
-    end
+    
+    serialize :tokens, JSON
+    
 
     if DeviseTokenAuth.default_callbacks
       include DeviseTokenAuth::Concerns::UserOmniauthCallbacks
@@ -92,19 +92,6 @@ module DeviseTokenAuth::Concerns::User
 
   module ClassMethods
     protected
-
-
-    def tokens_has_json_column_type?
-      database_exists? && table_exists? && self.columns_hash['tokens'] && self.columns_hash['tokens'].type.in?([:json, :jsonb])
-    end
-
-    def database_exists?
-      ActiveRecord::Base.connection
-    rescue ActiveRecord::NoDatabaseError
-      false
-    else
-      true
-    end
   end
 
 
