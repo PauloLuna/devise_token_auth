@@ -22,9 +22,6 @@ module DeviseTokenAuth::Concerns::User
     else
       self.devise_modules.delete(:omniauthable)
     end
-
-    
-    serialize :tokens, JSON
     
 
     if DeviseTokenAuth.default_callbacks
