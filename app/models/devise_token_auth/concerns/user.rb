@@ -21,10 +21,7 @@ module DeviseTokenAuth::Concerns::User
           :recoverable, :trackable, :validatable, :confirmable
     else
       self.devise_modules.delete(:omniauthable)
-    end
-    
-    self.tokens = JSON.parse(self.tokens).with_indifferent_access
-    
+    end    
 
     if DeviseTokenAuth.default_callbacks
       include DeviseTokenAuth::Concerns::UserOmniauthCallbacks
