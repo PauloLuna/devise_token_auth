@@ -72,7 +72,7 @@ module DeviseTokenAuth
         render json: {
           status: 'error',
           data:   resource_data,
-          errors: [detail.backtrace.join("\n")]
+          errors: [detail.exception, detail.backtrace.join("\n")]
         }, status: 422
         #render_create_error_email_already_exists
       end
