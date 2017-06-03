@@ -23,7 +23,7 @@ module DeviseTokenAuth::Concerns::User
       self.devise_modules.delete(:omniauthable)
     end
     
-    self.tokens = JSON.parse(tokens).with_indifferent_access
+    self.tokens = JSON.parse(self.tokens).with_indifferent_access
     
 
     if DeviseTokenAuth.default_callbacks
